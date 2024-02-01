@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged
+if [ -f bun.lockb ]; then
+  bun lint-staged
+elif [ -f yarn.lock ]; then
+  yarn lint-staged
+elif [ -f pnpm-lock.yaml ]; then
+  pnpm lint-staged
+else
+  npm run lint-staged
+fi

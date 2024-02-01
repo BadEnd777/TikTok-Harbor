@@ -1,0 +1,74 @@
+<script lang="ts">
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Loader, Download } from 'lucide-svelte';
+	import { API_URL, fetchData } from '@/utils/';
+	import { info } from '@/stores/infoStore';
+
+	let isLoaded = false;
+	let errorMsg = '';
+
+	// Function to handle form submission
+	const handleFormSubmit = async (e: Event) => {
+		e.preventDefault();
+		isLoaded = true;
+
+		try {
+			const form = e.target as HTMLFormElement;
+			const input = form.querySelector('input') as HTMLInputElement;
+
+			const params = new URLSearchParams({
+				url: input.value,
+				count: '12',
+				cursor: '0',
+				web: '1',
+				hd: '1'
+			});
+
+			const data = await fetchData(`${API_URL}/api/`, params);
+
+			if (data.code !== 0) {
+				errorMsg = data.msg;
+				return;
+			}
+
+			const { title, cover, author, hdplay, size, images } = data.data;
+
+			info.setInfo({
+				type: size ? 'video' : 'slideshow',
+				thumbnail: `${API_URL}${cover}`,
+				title,
+				author: author.nickname,
+				downloads: images ? images : [`${API_URL}${hdplay}`]
+			});
+		} catch (error) {
+			console.error(error);
+			errorMsg = 'An error occurred while processing your request.';
+		} finally {
+			isLoaded = false;
+		}
+	};
+</script>
+
+<form class="mt-8 flex w-full items-center space-x-2" on:submit={handleFormSubmit}>
+	<div class="flex-1 space-y-1">
+		<Input
+			type="text"
+			placeholder="Paste TikTok video link here"
+			class="w-full"
+			disabled={isLoaded}
+		/>
+		{#if errorMsg}
+			<p class="text-xs text-red-500">{errorMsg}</p>
+		{/if}
+	</div>
+	<Button type="submit" class="flex items-center space-x-2" disabled={isLoaded}>
+		{#if isLoaded}
+			<Loader class="h-6 w-6 animate-spin" />
+			<span>Please wait</span>
+		{:else}
+			<Download class="h-6 w-6" />
+			<span>Download</span>
+		{/if}
+	</Button>
+</form>
