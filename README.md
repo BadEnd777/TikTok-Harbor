@@ -69,35 +69,38 @@ To build the website for production, use:
 npm run build
 ```
 
-This will generates an optimized version of the website in the `.svelte-kit/output` directory.
+This will generates an optimized version of the website in the `build` directory.
 
-### Deploying to Cloudflare Pages
+### Deploying Static Website
 
-The TikTok Harbor website is deployed to [Cloudflare Pages](https://pages.cloudflare.com/). Refer to the [Cloudflare Pages documentation](https://developers.cloudflare.com/pages/get-started) for instructions on deploying the website.
+Ti deploy the website to a static hosting platform, use the following command:
 
-1. Install the Cloudflare adapter:
+1. Install the `@sveltejs/adapter-static` package:
 
 ```bash
-npm install -D @sveltejs/adapter-cloudflare
+npm install -D @sveltejs/adapter-static
 ```
 
 2. Add the adapter to the `svelte.config.js` file:
 
 ```javascript
-import adapter from '@sveltejs/adapter-cloudflare';
+import adapter from '@sveltejs/adapter-static';
 
 export default {
 	kit: {
-		adapter: adapter({
-			// See below for an explanation of these options
-			routes: {
-				include: ['/*'],
-				exclude: ['<all>']
-			}
-		})
+		// ...
+		adapter: adapter()
 	}
 };
 ```
+
+3. Build the website for production:
+
+```bash
+npm run build
+```
+
+4. Deploy the website to the hosting platform.
 
 > [!NOTE]
 > To deploy the website to other platforms, refer to the [SvelteKit Adapters documentation](https://kit.svelte.dev/docs/adapters).
