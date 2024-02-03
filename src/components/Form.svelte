@@ -50,7 +50,11 @@
 	};
 </script>
 
-<form class="mt-8 flex w-full items-center space-x-2" on:submit={handleFormSubmit}>
+<form
+	class="mt-8 flex w-full items-center space-x-2 md:mx-auto md:max-w-4xl
+"
+	on:submit={handleFormSubmit}
+>
 	<div class="flex-1 space-y-1">
 		<Input
 			type="text"
@@ -65,10 +69,10 @@
 	<Button type="submit" class="flex items-center space-x-2" disabled={isLoaded}>
 		{#if isLoaded}
 			<Loader class="h-6 w-6 animate-spin" />
-			<span>Please wait</span>
+			<span class="hidden sm:inline">Please wait</span>
 		{:else}
 			<Download class="h-6 w-6" />
-			<span>Download</span>
+			<span class="hidden sm:inline">Download</span>
 		{/if}
 	</Button>
 </form>

@@ -9,11 +9,9 @@
 	class="sticky top-0 z-50 h-16 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
 	<div class="container flex h-16 items-center justify-between">
-		<div class="flex items-center">
-			<a href="/" class="text-lg font-bold">
-				{siteConfig.title}
-			</a>
-		</div>
+		<a href="/" class="text-lg font-bold">
+			{siteConfig.title}
+		</a>
 		<nav class="flex items-center space-x-2">
 			<Button on:click={toggleMode} variant="ghost" size="icon">
 				<Sun

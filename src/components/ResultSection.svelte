@@ -60,10 +60,19 @@
 </script>
 
 {#if $info.title}
-	<div class="mt-8 flex w-full space-x-8">
-		<img src={$info.thumbnail} alt={$info.title} class="w-1/3 rounded-md object-cover" />
-		<div class="flex w-2/3 flex-col space-y-4">
-			<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">{$info.title}</h3>
+	<div
+		class="mt-8 flex w-full flex-col space-x-2 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mx-auto md:max-w-4xl md:space-x-8"
+	>
+		<img
+			src={$info.thumbnail}
+			alt={$info.title}
+			class="max-h-[200px] min-h-[200px] w-full rounded-md object-cover
+		 sm:max-h-[300px] sm:w-1/3"
+		/>
+		<div class="flex w-full flex-col space-y-4 sm:w-2/3">
+			<h3 class="text-md scroll-m-20 font-semibold tracking-tight md:text-xl lg:text-2xl">
+				{$info.title}
+			</h3>
 			<p class="text-muted-foreground">Author: {$info.author}</p>
 			<Button class="flex items-center space-x-2" on:click={handleDownload} disabled={isLoaded}>
 				{#if isLoaded}

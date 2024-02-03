@@ -8,26 +8,21 @@ interface InfoProps {
 	downloads: string[];
 }
 
+const initialState: InfoProps = {
+	type: '',
+	thumbnail: '',
+	title: '',
+	author: '',
+	downloads: []
+};
+
 const createInfoStore = () => {
-	const { subscribe, set } = writable<InfoProps>({
-		type: '',
-		thumbnail: '',
-		title: '',
-		author: '',
-		downloads: []
-	});
+	const { subscribe, set } = writable<InfoProps>(initialState);
 
 	return {
 		subscribe,
 		setInfo: (info: InfoProps) => set(info),
-		resetInfo: () =>
-			set({
-				type: '',
-				thumbnail: '',
-				title: '',
-				author: '',
-				downloads: []
-			})
+		resetInfo: () => set(initialState)
 	};
 };
 

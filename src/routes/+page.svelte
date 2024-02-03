@@ -7,12 +7,18 @@
 </script>
 
 <Layout>
-	<h1 class="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
-		Welcome to {siteConfig.title}
-	</h1>
-	<p class="text-center text-xl text-muted-foreground">
-		{siteConfig.description}
-	</p>
+	<div class="flex flex-col items-center space-y-2">
+		<h1
+			class="scroll-m-20 text-center text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl"
+		>
+			Welcome to {siteConfig.title}
+		</h1>
+		<p
+			class="md:text-md text-center text-sm text-muted-foreground md:max-w-2xl lg:max-w-3xl lg:text-lg"
+		>
+			{siteConfig.description}
+		</p>
+	</div>
 	<Form />
 	<ResultSection />
 </Layout>

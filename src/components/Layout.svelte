@@ -4,7 +4,7 @@
 </script>
 
 <Header />
-<main class="mx-auto flex min-h-[calc(100vh-4rem)] max-w-[750px] flex-col space-y-8 py-16">
+<main class="container mx-auto min-h-[calc(100vh-4rem)] overflow-x-hidden py-8">
 	<slot />
 </main>
 <Footer />

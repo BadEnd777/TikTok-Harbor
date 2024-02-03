@@ -4,28 +4,16 @@
 	const year = new Date().getFullYear();
 </script>
 
-<footer class="w-full border-t border-border/40 bg-background/95">
-	<div class="container flex h-16 items-center justify-between">
-		<div class="flex items-center space-x-2">
-			<p class="text-muted-foreground">© {year} {siteConfig.title}</p>
-			<div class="h-6 w-[1px] bg-border/40" />
-			<nav class="flex items-center space-x-2">
-				<a href="/privacy-policy" class="text-muted-foreground hover:underline"> Privacy Policy </a>
-				<a href="/terms-of-service" class="text-muted-foreground hover:underline">
-					Terms of Service
-				</a>
-			</nav>
-		</div>
-		<div class="flex items-center space-x-2">
-			<p class="text-muted-foreground">This website is open source, feel free to contribute.</p>
-			<a
-				href={siteConfig.repository}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="hover:underline"
-			>
-				View on GitHub
-			</a>
-		</div>
+<footer class="border-t border-border/40 bg-background/95">
+	<div class="container flex h-16 flex-col items-center justify-center">
+		<p class="text-sm text-muted-foreground">
+			&copy; {year}
+			{siteConfig.title}, All rights reserved.
+		</p>
+		<nav class="flex items-center space-x-4 text-sm text-muted-foreground">
+			<a href="/privacy-policy"> Privacy Policy </a>
+			<a href="/terms-of-service"> Terms of Service </a>
+			<a href={siteConfig.repository} target="_blank" rel="noopener noreferrer"> GitHub </a>
+		</nav>
 	</div>
 </footer>
