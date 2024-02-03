@@ -1,14 +1,13 @@
 <script lang="ts">
-	import { Loader, Download } from 'lucide-svelte';
+	import { Skeleton } from '$lib/components/ui/skeleton';
 	import { Button } from '$lib/components/ui/button';
-	import { info } from '@/stores/infoStore';
+	import { Loader, Download } from 'lucide-svelte';
+	import { info, isLoadings, isFetching } from '@/stores';
 	import JSZip from 'jszip';
-
-	let isLoaded = false;
 
 	// Function to handle download
 	const handleDownload = async () => {
-		isLoaded = true;
+		isLoadings.setLoading(true);
 
 		try {
 			if ($info?.type === 'video') {
@@ -54,28 +53,40 @@
 		} catch (error) {
 			console.error(error);
 		} finally {
-			isLoaded = false;
+			isLoadings.setLoading(false);
 		}
 	};
 </script>
 
-{#if $info.title}
+{#if $isFetching && !$info.title}
+	<div
+		class="mt-8 flex w-full flex-col space-x-2 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mx-auto md:max-w-4xl md:space-x-8"
+	>
+		<Skeleton
+			class="max-h-[200px] min-h-[200px] w-full rounded-md object-cover sm:max-h-[300px] sm:w-1/3"
+		/>
+		<div class="flex w-full flex-col space-y-4 sm:w-2/3">
+			<Skeleton class="h-6 w-1/2" />
+			<Skeleton class="h-4 w-1/4" />
+			<Skeleton class="h-6 w-1/3" />
+		</div>
+	</div>
+{:else if $info.title}
 	<div
 		class="mt-8 flex w-full flex-col space-x-2 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 md:mx-auto md:max-w-4xl md:space-x-8"
 	>
 		<img
 			src={$info.thumbnail}
 			alt={$info.title}
-			class="max-h-[200px] min-h-[200px] w-full rounded-md object-cover
-		 sm:max-h-[300px] sm:w-1/3"
+			class="max-h-[200px] min-h-[200px] w-full rounded-md object-cover sm:max-h-[300px] sm:w-1/3"
 		/>
 		<div class="flex w-full flex-col space-y-4 sm:w-2/3">
 			<h3 class="text-md scroll-m-20 font-semibold tracking-tight md:text-xl lg:text-2xl">
 				{$info.title}
 			</h3>
 			<p class="text-muted-foreground">Author: {$info.author}</p>
-			<Button class="flex items-center space-x-2" on:click={handleDownload} disabled={isLoaded}>
-				{#if isLoaded}
+			<Button class="flex items-center space-x-2" on:click={handleDownload} disabled={$isLoadings}>
+				{#if $isLoadings}
 					<Loader class="h-6 w-6 animate-spin" />
 					<span>Please wait</span>
 				{:else}

@@ -3,15 +3,15 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Loader, Download } from 'lucide-svelte';
 	import { API_URL, fetchData } from '@/utils/';
-	import { info } from '@/stores/infoStore';
+	import { info, isLoadings, isFetching } from '@/stores';
 
-	let isLoaded = false;
 	let errorMsg = '';
 
 	// Function to handle form submission
 	const handleFormSubmit = async (e: Event) => {
 		e.preventDefault();
-		isLoaded = true;
+		isLoadings.setLoading(true);
+		isFetching.setFetching(true);
 
 		try {
 			const form = e.target as HTMLFormElement;
@@ -45,7 +45,8 @@
 			console.error(error);
 			errorMsg = 'An error occurred while processing your request.';
 		} finally {
-			isLoaded = false;
+			isLoadings.setLoading(false);
+			isFetching.setFetching(false);
 		}
 	};
 </script>
@@ -60,14 +61,14 @@
 			type="text"
 			placeholder="Paste TikTok video link here"
 			class="w-full"
-			disabled={isLoaded}
+			disabled={$isLoadings || $isFetching}
 		/>
 		{#if errorMsg}
 			<p class="text-xs text-red-500">{errorMsg}</p>
 		{/if}
 	</div>
-	<Button type="submit" class="flex items-center space-x-2" disabled={isLoaded}>
-		{#if isLoaded}
+	<Button type="submit" class="flex items-center space-x-2" disabled={$isLoadings || $isFetching}>
+		{#if $isLoadings || $isFetching}
 			<Loader class="h-6 w-6 animate-spin" />
 			<span class="hidden sm:inline">Please wait</span>
 		{:else}

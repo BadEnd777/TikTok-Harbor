@@ -27,3 +27,25 @@ const createInfoStore = () => {
 };
 
 export const info = createInfoStore();
+
+const createLoadingStore = () => {
+	const { subscribe, set } = writable<boolean>(false);
+
+	return {
+		subscribe,
+		setLoading: (isLoading: boolean) => set(isLoading)
+	};
+};
+
+export const isLoadings = createLoadingStore();
+
+const createFetchingStore = () => {
+	const { subscribe, set } = writable<boolean>(false);
+
+	return {
+		subscribe,
+		setFetching: (isFetching: boolean) => set(isFetching)
+	};
+};
+
+export const isFetching = createFetchingStore();
