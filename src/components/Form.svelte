@@ -5,7 +5,7 @@
 	import { API_URL, fetchData } from '@/utils/';
 	import { info, isLoadings, isFetching } from '@/stores';
 
-	let errorMsg = '';
+	let errorMsg: string;
 
 	// Function to handle form submission
 	const handleFormSubmit = async (e: Event) => {
@@ -52,28 +52,27 @@
 </script>
 
 <form
-	class="mt-8 flex w-full items-center space-x-2 md:mx-auto md:max-w-4xl
-"
+	class="mt-8 flex w-full flex-col space-y-2 md:mx-auto md:max-w-4xl"
 	on:submit={handleFormSubmit}
 >
-	<div class="flex-1 space-y-1">
+	<div class="flex w-full space-x-2">
 		<Input
 			type="text"
 			placeholder="Paste TikTok video link here"
 			class="w-full"
 			disabled={$isLoadings || $isFetching}
 		/>
-		{#if errorMsg}
-			<p class="text-xs text-red-500">{errorMsg}</p>
-		{/if}
+		<Button type="submit" class="flex items-center space-x-2" disabled={$isLoadings || $isFetching}>
+			{#if $isLoadings || $isFetching}
+				<Loader class="h-6 w-6 animate-spin" />
+				<span class="hidden sm:inline">Please wait</span>
+			{:else}
+				<Download class="h-6 w-6" />
+				<span class="hidden sm:inline">Download</span>
+			{/if}
+		</Button>
 	</div>
-	<Button type="submit" class="flex items-center space-x-2" disabled={$isLoadings || $isFetching}>
-		{#if $isLoadings || $isFetching}
-			<Loader class="h-6 w-6 animate-spin" />
-			<span class="hidden sm:inline">Please wait</span>
-		{:else}
-			<Download class="h-6 w-6" />
-			<span class="hidden sm:inline">Download</span>
-		{/if}
-	</Button>
+	{#if errorMsg}
+		<p class="text-sm text-red-500">{errorMsg}</p>
+	{/if}
 </form>
