@@ -1,0 +1,20 @@
+{
+	"entry": ["src/**/*.{ts,svelte}"],
+	"extensions": [".ts", ".tsx"],
+	"ignorePatterns": ["**/node_modules/**"],
+	"ignoreUnused": [
+		"@capacitor/android",
+		"@capacitor/ios",
+		"@types/node",
+		"jszip",
+		"lucide-svelte",
+		"mode-watcher"
+	],
+	"ignoreUnresolved": [
+		["svelte/easing", ["src\\lib\\utils.ts"]],
+		["svelte/store", ["src\\stores\\index.ts"]],
+		["svelte/transition", ["src\\lib\\utils.ts"]]
+	],
+	"respectGitignore": true,
+	"ignoreUnimported": []
+}
