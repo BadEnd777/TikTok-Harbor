@@ -48,7 +48,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@types/node": "^20.11.14",
+		"@types/node": "^20.11.17",
 		"bits-ui": "^0.16.0",
 		"clsx": "^2.1.0",
 		"jszip": "^3.10.1",
