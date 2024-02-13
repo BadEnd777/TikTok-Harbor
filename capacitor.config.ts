@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
 	appId: 'com.badend.tiktokharbor',
-	appName: 'tiktok-harbor',
+	appName: 'Tiktok Harbor',
 	webDir: 'build',
 	server: {
 		androidScheme: 'https'

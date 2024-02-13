@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">tiktok-harbor</string>
-    <string name="title_activity_main">tiktok-harbor</string>
+    <string name="app_name">Tiktok Harbor</string>
+    <string name="title_activity_main">Tiktok Harbor</string>
     <string name="package_name">com.badend.tiktokharbor</string>
     <string name="custom_url_scheme">com.badend.tiktokharbor</string>
 </resources>

@@ -1,0 +1,7 @@
+{
+  "name": "tiktok-harbor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
