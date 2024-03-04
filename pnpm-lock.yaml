@@ -15,8 +15,8 @@ dependencies:
     specifier: ^5.7.0
     version: 5.7.0(@capacitor/core@5.7.0)
   '@types/node':
-    specifier: ^20.11.17
-    version: 20.11.17
+    specifier: ^20.11.24
+    version: 20.11.24
   bits-ui:
     specifier: ^0.18.1
     version: 0.18.1(svelte@4.2.10)
@@ -126,7 +126,7 @@ devDependencies:
     version: 1.31.1(eslint@8.56.0)
   vite:
     specifier: ^5.1.1
-    version: 5.1.1(@types/node@20.11.17)
+    version: 5.1.1(@types/node@20.11.24)
 
 packages:
 
@@ -982,7 +982,7 @@ packages:
       sirv: 2.0.4
       svelte: 4.2.10
       tiny-glob: 0.2.9
-      vite: 5.1.1(@types/node@20.11.17)
+      vite: 5.1.1(@types/node@20.11.24)
     dev: true
 
   /@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.10)(vite@5.1.1):
@@ -996,7 +996,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.10)(vite@5.1.1)
       debug: 4.3.4
       svelte: 4.2.10
-      vite: 5.1.1(@types/node@20.11.17)
+      vite: 5.1.1(@types/node@20.11.24)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1015,7 +1015,7 @@ packages:
       magic-string: 0.30.7
       svelte: 4.2.10
       svelte-hmr: 0.15.3(svelte@4.2.10)
-      vite: 5.1.1(@types/node@20.11.17)
+      vite: 5.1.1(@types/node@20.11.24)
       vitefu: 0.2.5(vite@5.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -1048,15 +1048,15 @@ packages:
   /@types/fs-extra@8.1.5:
     resolution: {integrity: sha512-0dzKcwO+S8s2kuF5Z9oUWatQJj5Uq/iqphEtE3GQJVRRYm/tD1LglU2UnXi2A8jLq5umkGouOXOR9y0n613ZwQ==}
     dependencies:
-      '@types/node': 20.11.17
+      '@types/node': 20.11.24
     dev: true
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
 
-  /@types/node@20.11.17:
-    resolution: {integrity: sha512-QmgQZGWu1Yw9TDyAP9ZzpFJKynYNeOvwMJmaxABfieQoVoiVOS6MN1WSpqpRcbeA5+RW82kraAVxCCJg+780Qw==}
+  /@types/node@20.11.24:
+    resolution: {integrity: sha512-Kza43ewS3xoLgCEpQrsT+xRo/EJej1y0kVYGiLFE1NEODXGzTfwiC6tXTLMQskn1X4/Rjlh0MQUvx9W+L9long==}
     dependencies:
       undici-types: 5.26.5
 
@@ -4602,7 +4602,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite@5.1.1(@types/node@20.11.17):
+  /vite@5.1.1(@types/node@20.11.24):
     resolution: {integrity: sha512-wclpAgY3F1tR7t9LL5CcHC41YPkQIpKUGeIuT8MdNwNZr6OqOTLs7JX5vIHAtzqLWXts0T+GDrh9pN2arneKqg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4630,7 +4630,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.17
+      '@types/node': 20.11.24
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.10.0
@@ -4646,7 +4646,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.1.1(@types/node@20.11.17)
+      vite: 5.1.1(@types/node@20.11.24)
     dev: true
 
   /vlq@0.2.3:
